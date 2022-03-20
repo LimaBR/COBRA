@@ -1,27 +1,26 @@
 clear;
 clc
 close all;
-
+%% Definição de constantes e coeficientes 
 
 amostras=100;
-
 x = linspace(-5, 5, amostras);
+random=randn(1,102);
+a=random(101);
+b=random(102);
+%% Gerando trajetorias parabolicas com implementação de ruido de distribuiçao normal (1,0)
 
-random=randn(1,10);
+y = a*x.^2+b;
+for n=1:1:100
+    y1(n)=y(n)+random(n);
 
-a=random(1);
-b=random(2);
-
-
-y1 = a*x.^2+b;
-
+end
+%% Plotando os gráficos
 
 f = figure();
-
 ax = axes();
 
 hold(ax); 
-% to plot multiple lines on one axes
-
+plot(x, y);
 plot(x, y1);
 
