@@ -18,8 +18,8 @@ x0=random_other(3);
 y0=random_other(4);
 z0=random_other(5);
 
-a=-10*abs(randomz(1));
-b=random_other(2);
+a=-50*abs(randomz(1));
+b=10*random_other(2);
 
 azimute=pi/3;
 %% Gerando trajetorias parabolicas com implementação de ruido de distribuiçao normal (1,0)
@@ -47,7 +47,7 @@ end
 %% Plotando os gráficos
 
  
-%plot3(x1,y1,z1);
+plot3(x1,y1,z1);
 axis equal
 xlabel('x(t)')
 ylabel('y(t)')
@@ -56,8 +56,8 @@ zlabel('z(t)')
 
 
 %% 
-[Xi,Yi]=meshgrid(t,t);
-Zi=griddata(x1,y1,z1,Xi,Yi);
-mesh(Xi,Yi,Zi);
-plot3(x1,y1,Zi,'*');
+%[Xi,Yi]=meshgrid(t,t);
+%Zi=griddata(x1,y1,z1,Xi,Yi);
+%mesh(Xi,Yi,Zi);
+%plot3(x1,y1,Zi,'*');
 
