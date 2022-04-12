@@ -21,37 +21,44 @@ z0=random_other(5);
 a=-50*abs(randomz(1));
 b=10*random_other(2);
 
-azimute=pi/3;
+azimute=pi*random_other(6);
 %% Gerando trajetorias parabolicas com implementação de ruido de distribuiçao normal (1,0)
 
 x=t.*cos(azimute)+x0;
 y=t.*sin(azimute)+y0;
 
-for n=1:1:amostras
-    x1(n)=x(n)+randomx(n);
+% for n=1:1:amostras
+%     x1(n)=x(n)+randomx(n);
+% 
+% end
+% 
+% for n=1:1:amostras
+%     y1(n)=y(n)+randomy(n);
+% 
+% end
 
-end
+z = a*(x.^2+y.^2)+b+z0;
 
-for n=1:1:amostras
-    y1(n)=y(n)+randomy(n);
 
-end
+distancia_medida=sqrt(z.^2+x.^2+y.^2);
 
-z = a*(x1.^2+y1.^2)+b+z0;
+azimute_medido=atan(y./x);
 
-for n=1:1:amostras
-
-    z1(n)=z(n)+randomz(n);
-
-end
+% for n=1:1:amostras
+% 
+%     z1(n)=z(n)+randomz(n);
+% 
+% end
 %% Plotando os gráficos
 
  
-plot3(x1,y1,z1);
-axis equal
-xlabel('x(t)')
-ylabel('y(t)')
-zlabel('z(t)')
+% plot3(x1,y1,z1);
+% axis equal
+% xlabel('x(t)')
+% ylabel('y(t)')
+% zlabel('z(t)')
+
+
 
 
 
