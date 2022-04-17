@@ -66,11 +66,31 @@ plot3(x, y, z)
 
 
 
-%% 
+%% COlocando ruido
 %[Xi,Yi]=meshgrid(t,t);
 %Zi=griddata(x1,y1,z1,Xi,Yi);
 %mesh(Xi,Yi,Zi);
 %plot3(x1,y1,Zi,'*');
 
-out = [distancia_medida; azimute_medido; phi_medido];
+
+
+for n=1:1:amostras
+    distancia_medida1(n)=distancia_medida(n)+randomx(n);
+ 
+end
+
+for n=1:1:amostras
+   azimute_medido1(n)=azimute_medido(n)+randomx(n);
+ 
+end
+
+for n=1:1:amostras
+    phi_medido1(n)=phi_medido(n)+randomx(n);
+ 
+ end
+
+
+%%
+
+out = [distancia_medida1; azimute_medido1; phi_medido1];
 writematrix(out, 'LabVIEW\adp.csv');
