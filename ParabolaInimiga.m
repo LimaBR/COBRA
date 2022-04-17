@@ -42,7 +42,11 @@ z = a*(x.^2+y.^2)+b+z0;
 
 distancia_medida=sqrt(z.^2+x.^2+y.^2);
 
-azimute_medido=atan(y./x);
+azimute_medido=atan2(y, x);
+
+phi_medido=atan2(sqrt(x.^2 + y.^2), z)
+
+plot3(x, y, z)
 
 % for n=1:1:amostras
 % 
@@ -68,3 +72,5 @@ azimute_medido=atan(y./x);
 %mesh(Xi,Yi,Zi);
 %plot3(x1,y1,Zi,'*');
 
+out = [distancia_medida; azimute_medido; phi_medido];
+writematrix(out, 'LabVIEW\adp.csv');
