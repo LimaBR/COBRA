@@ -46,6 +46,7 @@ azimute_medido=atan2(y, x);
 
 phi_medido=atan2(sqrt(x.^2 + y.^2), z)
 
+%subplot(2,1,1)
 plot3(x, y, z)
 
 % for n=1:1:amostras
@@ -93,4 +94,8 @@ for n=1:1:amostras
 %%
 
 out = [distancia_medida1; azimute_medido1; phi_medido1];
-writematrix(out, 'LabVIEW\adp.csv');
+writematrix(out, 'LabVIEW\Main Folder\adp.csv');
+
+%subplot(2,1,2)
+%plot3(distancia_medida,azimute_medido1,phi_medido1);
+
