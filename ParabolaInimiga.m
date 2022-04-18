@@ -9,7 +9,7 @@ t = linspace(-5, 5, amostras);
 
 
 randomz=0.01*randn(1,amostras);
-randomx=0.01*randn(1,amostras);
+randomx=0*randn(1,amostras);
 randomy=0.1*randn(1,amostras);
 random_other=randn(1,amostras);
 
