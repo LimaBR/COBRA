@@ -16,10 +16,10 @@ random_other=randn(1,amostras);
 %ponto de origem do inimigo
 x0=random_other(3);
 y0=random_other(4);
-z0=random_other(5);
+z0=abs(random_other(5));
 
-a=-50*abs(randomz(1));
-b=10*random_other(2);
+a=-1*abs(randomz(1));
+b=10*abs(random_other(2));
 
 azimute=pi*random_other(6);
 %% Gerando trajetorias parabolicas com implementação de ruido de distribuiçao normal (1,0)
@@ -75,17 +75,17 @@ plot3(x, y, z)
 
 
 
-for n=1:1:amostras
+for n=10:1:amostras
     distancia_medida1(n)=distancia_medida(n)+randomx(n);
  
 end
 
-for n=1:1:amostras
+for n=10:1:amostras
    azimute_medido1(n)=azimute_medido(n)+randomx(n);
  
 end
 
-for n=1:1:amostras
+for n=10:1:amostras
     phi_medido1(n)=phi_medido(n)+randomx(n);
  
  end
