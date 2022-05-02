@@ -75,17 +75,17 @@ plot3(x, y, z)
 
 
 
-for n=10:1:amostras
+for n=1:1:amostras
     distancia_medida1(n)=distancia_medida(n)+randomx(n);
  
 end
 
-for n=10:1:amostras
+for n=1:1:amostras
    azimute_medido1(n)=azimute_medido(n)+randomx(n);
  
 end
 
-for n=10:1:amostras
+for n=1:1:amostras
     phi_medido1(n)=phi_medido(n)+randomx(n);
  
  end
