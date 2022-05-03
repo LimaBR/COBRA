@@ -49,6 +49,9 @@ phi_medido=atan2(sqrt(x.^2 + y.^2), z)
 subplot(2,1,1)
 plot3(x, y, z)
 
+out1 = [x; y; z];
+writematrix(out1, 'LabVIEW\Main Folder\adpteste.csv');
+
 grid on
 xlabel('x')
 ylabel('y')
