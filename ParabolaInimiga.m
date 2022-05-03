@@ -4,21 +4,21 @@ close all;
 %% Definição de constantes e coeficientes 
 
 amostras=100;
-t = linspace(-5, 5, amostras);
+t = linspace(-1, 1, amostras);
 
 
 
-randomz=0.01*randn(1,amostras);
-randomx=0*randn(1,amostras);
-randomy=0.1*randn(1,amostras);
+randomz=0.005*randn(1,amostras);
+randomx=0.005*randn(1,amostras);
+randomy=0.009*randn(1,amostras);
 random_other=randn(1,amostras);
 
 %ponto de origem do inimigo
 x0=random_other(3);
 y0=random_other(4);
-z0=abs(random_other(5));
+z0=abs(5*random_other(5));
 
-a=-1*abs(randomz(1));
+a=-1*abs(random_other(1));
 b=10*abs(random_other(2));
 
 azimute=pi*random_other(6);
@@ -46,8 +46,13 @@ azimute_medido=atan2(y, x);
 
 phi_medido=atan2(sqrt(x.^2 + y.^2), z)
 
-%subplot(2,1,1)
+subplot(2,1,1)
 plot3(x, y, z)
+
+grid on
+xlabel('x')
+ylabel('y')
+zlabel('z')
 
 % for n=1:1:amostras
 % 
@@ -81,15 +86,16 @@ for n=1:1:amostras
 end
 
 for n=1:1:amostras
-   azimute_medido1(n)=azimute_medido(n)+randomx(n);
+   azimute_medido1(n)=azimute_medido(n)+randomy(n);
  
 end
 
 for n=1:1:amostras
-    phi_medido1(n)=phi_medido(n)+randomx(n);
+    phi_medido1(n)=phi_medido(n)+randomz(n);
  
- end
+end
 
+ zfinal=phi_medido1.*distancia_medida1;
 
 %%
 
@@ -99,3 +105,12 @@ writematrix(out, 'LabVIEW\Main Folder\adp.csv');
 %subplot(2,1,2)
 %plot3(distancia_medida,azimute_medido1,phi_medido1);
 
+
+[xfinal,yfinal,zfinal] = pol2cart(azimute_medido1,phi_medido1,zfinal);
+subplot(2,1,2)
+plot3(xfinal,yfinal,zfinal);
+
+grid on
+xlabel('xfinal')
+ylabel('yfinal')
+zlabel('zfinal')
