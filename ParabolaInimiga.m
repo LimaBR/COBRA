@@ -7,10 +7,13 @@ amostras=100;
 t = linspace(-1, 1, amostras);
 
 
-
-randomz=0.005*randn(1,amostras);
+%elevaçao
+randomz=0.05*randn(1,amostras);
+%distancia
 randomx=0.005*randn(1,amostras);
-randomy=0.009*randn(1,amostras);
+%azimute
+randomy=0.0009*randn(1,amostras);
+
 random_other=randn(1,amostras);
 
 %ponto de origem do inimigo
@@ -83,16 +86,19 @@ zlabel('z')
 
 
 
+%distancia
 for n=1:1:amostras
     distancia_medida1(n)=distancia_medida(n)+randomx(n);
  
 end
 
+%azimute 
 for n=1:1:amostras
    azimute_medido1(n)=azimute_medido(n)+randomy(n);
  
 end
 
+%elevaçao
 for n=1:1:amostras
     phi_medido1(n)=phi_medido(n)+randomz(n);
  
