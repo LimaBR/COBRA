@@ -46,7 +46,7 @@ azimute_medido=atan2(y, x);
 
 phi_medido=atan2(sqrt(x.^2 + y.^2), z)
 
-subplot(2,1,1)
+%subplot(2,1,1)
 plot3(x, y, z)
 
 out1 = [x; y; z];
@@ -109,11 +109,11 @@ writematrix(out, 'LabVIEW\Main Folder\adp.csv');
 %plot3(distancia_medida,azimute_medido1,phi_medido1);
 
 
-[xfinal,yfinal,zfinal] = pol2cart(azimute_medido1,phi_medido1,zfinal);
-subplot(2,1,2)
-plot3(xfinal,yfinal,zfinal);
-
-grid on
-xlabel('xfinal')
-ylabel('yfinal')
-zlabel('zfinal')
+% [xfinal,yfinal,zfinal] = pol2cart(azimute_medido1,phi_medido1,zfinal);
+% subplot(2,1,2)
+% plot3(xfinal,yfinal,zfinal);
+% 
+% grid on
+% xlabel('xfinal')
+% ylabel('yfinal')
+% zlabel('zfinal')
