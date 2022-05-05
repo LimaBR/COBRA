@@ -4,7 +4,7 @@ close all;
 %% Definição de constantes e coeficientes 
 
 amostras=100;
-t = linspace(-1, 1, amostras);
+t = linspace(-50000, 50000, amostras);
 
 
 %elevaçao
@@ -17,30 +17,29 @@ randomy=0.00009*(randn(1,amostras)-0.5);
 random_other=randn(1,amostras);
 
 %ponto de origem do inimigo
-x0=random_other(3);
-y0=random_other(4);
-z0=abs(5*random_other(5));
+x0=50000*abs(random_other(3));
+y0=50000*abs(random_other(4));
+% z0=abs(500000*random_other(5));
 
-a=-1*abs(random_other(1));
-b=10*abs(random_other(2));
+% a=-1*abs(random_other(1));
+% b=900000000000*abs(random_other(2));
+
+c1=25255.51;
+c2=-9.89e-6;
+c3=-9.89e-6;
+
 
 azimute=pi*random_other(6);
+theta=random('Uniform',0,pi/4);
 %% Gerando trajetorias parabolicas com implementação de ruido de distribuiçao normal (1,0)
 
-x=t.*cos(azimute)+x0;
-y=t.*sin(azimute)+y0;
+x=t.*cos(azimute)-x0;
+y=t.*sin(azimute)-y0;
 
-% for n=1:1:amostras
-%     x1(n)=x(n)+randomx(n);
-% 
-% end
-% 
-% for n=1:1:amostras
-%     y1(n)=y(n)+randomy(n);
-% 
-% end
 
-z = a*(x.^2+y.^2)+b+z0;
+%z = a*(x.^2+y.^2)+b+z0;
+z=c1+c2*(x.^2+y.^2);
+%z=tan(theta)*(x+y)+c3*((sec(theta))^2)*(x.^2+y.^2);
 
 
 distancia_medida=sqrt(z.^2+x.^2+y.^2);
@@ -60,19 +59,9 @@ xlabel('x')
 ylabel('y')
 zlabel('z')
 
-% for n=1:1:amostras
-% 
-%     z1(n)=z(n)+randomz(n);
-% 
-% end
+
 %% Plotando os gráficos
 
- 
-% plot3(x1,y1,z1);
-% axis equal
-% xlabel('x(t)')
-% ylabel('y(t)')
-% zlabel('z(t)')
 
 
 out = [distancia_medida; azimute_medido; phi_medido];
@@ -80,12 +69,6 @@ writematrix(out, 'LabVIEW\Main Folder\adppadrao.csv');
 
 
 %% COlocando ruido
-%[Xi,Yi]=meshgrid(t,t);
-%Zi=griddata(x1,y1,z1,Xi,Yi);
-%mesh(Xi,Yi,Zi);
-%plot3(x1,y1,Zi,'*');
-
-
 
 %distancia
 for n=1:1:amostras
@@ -114,13 +97,3 @@ writematrix(out1, 'LabVIEW\Main Folder\adp.csv');
 
 %subplot(2,1,2)
 %plot3(distancia_medida,azimute_medido1,phi_medido1);
-
-
-% [xfinal,yfinal,zfinal] = pol2cart(azimute_medido1,phi_medido1,zfinal);
-% subplot(2,1,2)
-% plot3(xfinal,yfinal,zfinal);
-% 
-% grid on
-% xlabel('xfinal')
-% ylabel('yfinal')
-% zlabel('zfinal')
