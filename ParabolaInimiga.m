@@ -4,7 +4,7 @@ close all;
 %% Definição de constantes e coeficientes 
 
 amostras=100;
-t = linspace(-3000,3000, amostras);
+t = linspace(-1, 1, amostras);
 
 
 %elevaçao
@@ -17,14 +17,12 @@ randomy=0.00009*(randn(1,amostras)-0.5);
 random_other=randn(1,amostras);
 
 %ponto de origem do inimigo
-a=-abs(5*random_other(3));
-c=-abs(5*random_other(5));
-delta1=sqrt(4*a*c);
-b=random('Uniform',0,delta1);
-d=-1*abs(random_other(1));
-f=-10*abs(random_other(2));
-delta2=sqrt(4*d*f);
-e=random('Uniform',0,delta2);
+x0=random_other(3);
+y0=random_other(4);
+z0=abs(5*random_other(5));
+
+a=-1*abs(random_other(1));
+b=10*abs(random_other(2));
 
 azimute=pi*random_other(6);
 %% Gerando trajetorias parabolicas com implementação de ruido de distribuiçao normal (1,0)
@@ -32,10 +30,18 @@ azimute=pi*random_other(6);
 x=t.*cos(azimute)+x0;
 y=t.*sin(azimute)+y0;
 
+% for n=1:1:amostras
+%     x1(n)=x(n)+randomx(n);
+% 
+% end
+% 
+% for n=1:1:amostras
+%     y1(n)=y(n)+randomy(n);
+% 
+% end
 
-zx = a*(x.^2)+b*x+c;
-zy = d*(y.^2)+e*y+f;
-z=zx+zy;
+z = a*(x.^2+y.^2)+b+z0;
+
 
 distancia_medida=sqrt(z.^2+x.^2+y.^2);
 
@@ -54,7 +60,11 @@ xlabel('x')
 ylabel('y')
 zlabel('z')
 
-
+% for n=1:1:amostras
+% 
+%     z1(n)=z(n)+randomz(n);
+% 
+% end
 %% Plotando os gráficos
 
  
@@ -70,6 +80,12 @@ writematrix(out, 'LabVIEW\Main Folder\adppadrao.csv');
 
 
 %% COlocando ruido
+%[Xi,Yi]=meshgrid(t,t);
+%Zi=griddata(x1,y1,z1,Xi,Yi);
+%mesh(Xi,Yi,Zi);
+%plot3(x1,y1,Zi,'*');
+
+
 
 %distancia
 for n=1:1:amostras
