@@ -8,11 +8,11 @@ t = linspace(-1, 1, amostras);
 
 
 %elevaçao
-randomz=0.05*randn(1,amostras);
+randomz=0.005*(randn(1,amostras)-0.5);
 %distancia
-randomx=0.005*randn(1,amostras);
+randomx=0.0005*(randn(1,amostras)-0.5);
 %azimute
-randomy=0.0009*randn(1,amostras);
+randomy=0.00009*(randn(1,amostras)-0.5);
 
 random_other=randn(1,amostras);
 
@@ -75,7 +75,8 @@ zlabel('z')
 % zlabel('z(t)')
 
 
-
+out = [distancia_medida; azimute_medido; phi_medido];
+writematrix(out, 'LabVIEW\Main Folder\adppadrao.csv');
 
 
 %% COlocando ruido
@@ -108,8 +109,8 @@ end
 
 %%
 
-out = [distancia_medida1; azimute_medido1; phi_medido1];
-writematrix(out, 'LabVIEW\Main Folder\adp.csv');
+out1 = [distancia_medida1; azimute_medido1; phi_medido1];
+writematrix(out1, 'LabVIEW\Main Folder\adp.csv');
 
 %subplot(2,1,2)
 %plot3(distancia_medida,azimute_medido1,phi_medido1);
