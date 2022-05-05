@@ -17,9 +17,9 @@ randomy=0.00009*(randn(1,amostras)-0.5);
 random_other=randn(1,amostras);
 
 %ponto de origem do inimigo
-x0=50000*abs(random_other(3));
-y0=50000*abs(random_other(4));
-% z0=abs(500000*random_other(5));
+x0=abs(5000*random_other(3));
+y0=abs(5000*random_other(4));
+z0=abs(5000);
 
 % a=-1*abs(random_other(1));
 % b=900000000000*abs(random_other(2));
@@ -33,13 +33,13 @@ azimute=pi*random_other(6);
 theta=random('Uniform',0,pi/4);
 %% Gerando trajetorias parabolicas com implementação de ruido de distribuiçao normal (1,0)
 
-x=t.*cos(azimute)-x0;
-y=t.*sin(azimute)-y0;
+x=t.*cos(azimute)+x0;
+y=t.*sin(azimute)+y0;
 
 
 %z = a*(x.^2+y.^2)+b+z0;
-z=c1+c2*(x.^2+y.^2);
-%z=tan(theta)*(x+y)+c3*((sec(theta))^2)*(x.^2+y.^2);
+z=c1/10+(c2*(x.^2+y.^2)+z0)/10;
+%z=tan(theta)*(x+y)+c3*((sec(theta))^2)*(x.^2+y.^2)+z0;
 
 
 distancia_medida=sqrt(z.^2+x.^2+y.^2);
