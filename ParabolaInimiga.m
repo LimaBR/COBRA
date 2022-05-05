@@ -60,7 +60,7 @@ ylabel('y')
 zlabel('z')
 
 
-%% Plotando os gráficos
+%% Mandando para o labview o ideal
 
 
 
@@ -90,7 +90,7 @@ end
 
  zfinal=phi_medido1.*distancia_medida1;
 
-%%
+%% Mandando para o labview com ruido
 
 out1 = [distancia_medida1; azimute_medido1; phi_medido1];
 writematrix(out1, 'LabVIEW\Main Folder\adp.csv');
